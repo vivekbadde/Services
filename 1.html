@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script><!-- Installation jquery IS requred -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+        <script>
+        var application = angular.module('application', []);
+       application.controller('myCtrl', function ($scope, $http){
+          $http.get('list.json').success(function(data) {
+            $scope.heroes = data;
+          });
+        });
+      </script>
+
+
+
+
+
+
+</head>
+<body ng-app="application" >
+    <div class="container" ng-controller="myCtrl">
+	     <h2>Description table</h2>
+    		<table class="table">
+      		<thead>
+      			<tr>
+        			<th>ID</th>
+		    		<th>Name</th>
+        			<th>Localised Name</th>
+      			</tr>
+      		</thead>
+      		<tbody>
+      		<tr ng-repeat="hero in heroes">
+        <td>{{hero.id}}</td>
+		    <td>{{hero.name}}</td>
+      
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </body>
+</html>
